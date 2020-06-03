@@ -88,7 +88,7 @@ class DropDownPicker extends React.Component {
     }
 
     render() {
-        const { defaultNull, placeholder, disabled } = this.props;
+        const { defaultNull, placeholder, disabled, keyboardShouldPersistTaps } = this.props;
         const isPlaceholderActive = (defaultNull) && this.state.choice.label === null;
         const label = isPlaceholderActive ? (placeholder) : this.state.choice.label;
         const placeholderStyle = isPlaceholderActive && this.props.placeholderStyle;
@@ -124,7 +124,7 @@ class DropDownPicker extends React.Component {
                     maxHeight: this.props.dropDownMaxHeight,
                     zIndex: this.props.zIndex
                 }]}>
-                    <ScrollView style={{width: '100%', zIndex: this.props.zIndex}} nestedScrollEnabled={true}>
+                    <ScrollView style={{width: '100%', zIndex: this.props.zIndex}} nestedScrollEnabled={true} keyboardShouldPersistTaps={keyboardShouldPersistTaps}>
                         {
                             this.props.items.map((item, index) => (
                                 <TouchableOpacity key={index} onPress={() => this.select(item, index)} style={[styles.dropDownItem, this.props.itemStyle, (
@@ -164,6 +164,7 @@ DropDownPicker.defaultProps = {
     zIndex: 5000,
     disabled: false,
     onChangeItem: () => {},
+    keyboardShouldPersistTaps: false
 };
 
 DropDownPicker.propTypes = {
@@ -188,7 +189,8 @@ DropDownPicker.propTypes = {
     customArrowDown: PropTypes.any,
     zIndex: PropTypes.number,
     disabled: PropTypes.bool,
-    onChangeItem: PropTypes.func
+    onChangeItem: PropTypes.func,
+    keyboardShouldPersistTaps: PropTypes.bool
 };
 
 const styles = StyleSheet.create({
