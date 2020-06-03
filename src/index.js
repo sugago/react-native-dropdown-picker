@@ -124,7 +124,7 @@ class DropDownPicker extends React.Component {
                     maxHeight: this.props.dropDownMaxHeight,
                     zIndex: this.props.zIndex
                 }]}>
-                    <ScrollView style={{width: '100%', zIndex: this.props.zIndex}} nestedScrollEnabled={true} keyboardShouldPersistTaps={keyboardShouldPersistTaps}>
+                    <ScrollView style={{width: '100%', zIndex: this.props.zIndex}} nestedScrollEnabled={true} keyboardShouldPersistTaps={true}>
                         {
                             this.props.items.map((item, index) => (
                                 <TouchableOpacity key={index} onPress={() => this.select(item, index)} style={[styles.dropDownItem, this.props.itemStyle, (
